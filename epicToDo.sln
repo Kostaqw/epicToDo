@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLEpicToDo", "BLEpicToDo\BLEpicToDo.csproj", "{74B0EF3A-C46F-48DC-B93F-1BE72CC8E9A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicUi", "EpicUi\EpicUi.csproj", "{C7677FEF-6FFA-4E4E-8707-9086F05D13ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B0EF3A-C46F-48DC-B93F-1BE72CC8E9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B0EF3A-C46F-48DC-B93F-1BE72CC8E9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B0EF3A-C46F-48DC-B93F-1BE72CC8E9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B0EF3A-C46F-48DC-B93F-1BE72CC8E9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7677FEF-6FFA-4E4E-8707-9086F05D13ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7677FEF-6FFA-4E4E-8707-9086F05D13ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7677FEF-6FFA-4E4E-8707-9086F05D13ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7677FEF-6FFA-4E4E-8707-9086F05D13ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A39CA22-0F7B-4024-9C48-53547FAFFB7D}
+	EndGlobalSection
+EndGlobal
