@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
 namespace BLEpicToDo.Model
 {
     public class Daily
     {
-        public int DailyId { get; set; }
+        [Key]public int DailyId { get; set; }
         public EpicToDo.Attribute Skil { get; }
         public Dificults Dificult { get; }
         public DateTime DateCreate { get; set; }

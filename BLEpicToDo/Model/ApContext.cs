@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace BLEpicToDo.Model
 {
-    class ApContext:DbContext
+    public class ApContext:DbContext
     {
         public ApContext():base("DBApplication") { }
 
-        public DbSet<User> Users;
-        public DbSet<Taski> Tasks;
-        public DbSet<Daily> Dailies;
-        public DbSet<Ability> Abilities;
+        public DbSet<User> Users { get; set; }
+        public DbSet<EpicToDo.Task> Tasks { get; set; }
+        public DbSet<Daily> Dailies { get; set; }
+        public DbSet<Ability> Abilities { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EpicToDo
 {
@@ -16,9 +17,10 @@ namespace EpicToDo
     }
    public class User
     {
-        public int UserId { get; }
-        public string Name { get; }
-        public string Password { get; } //TODO: реализовать хэширование
+
+        [Key] public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; } //TODO: реализовать хэширование
         public int Level { get; set; }
         public int Exp { get; set; }
         public int Strength { get; set; }
@@ -34,5 +36,27 @@ namespace EpicToDo
         
         public virtual ICollection<Ability> Abilities { get; set; }
         public virtual ICollection<Achive> Achives { get; set; }
+
+        public User(string name, string password)
+        {
+            //TODO: услажнить проверку (пробелы, количество символов)
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Имя не может быть пустым", nameof(name));
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("Пароль не может быть пустым", nameof(password));
+            }
+
+            Name = name;
+            Password = password;
+        }
+
+        public User()
+        {
+
+        }
     }
 }

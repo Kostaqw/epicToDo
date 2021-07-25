@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EpicToDo
 {
@@ -14,10 +15,10 @@ namespace EpicToDo
         hard,
         legendary
     }
-    public class Taski
+    public class Task
     {
-        public int TaskiId { get; set; }
-        public Dificults Dificult { get; }
+        [Key]public int Id { get; set; }
+        public Dificults Dificult { get; set; }
         public bool notification { get; set; }
       
         public int UserId { get; set; }
