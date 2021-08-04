@@ -97,6 +97,9 @@
     <EmbeddedResource Include="Abylites.resx">
       <DependentUpon>Abylites.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbylitesAdd.resx">
+      <DependentUpon>AbylitesAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

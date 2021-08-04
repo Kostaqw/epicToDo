@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.ComponentModel;
 
 namespace BLEpicToDo.controller
 {
@@ -46,6 +47,22 @@ namespace BLEpicToDo.controller
             }
 
             return abilites;
+        }
+
+        public void AddAbility(Ability abil)
+        {
+            AC.Abilities.Add(abil);
+        }
+        public EpicToDo.Attribute StringToAttribute(string name)
+        {
+            switch (name)
+            {
+                case "Сила": return EpicToDo.Attribute.Strength;
+                case "Интилект": return EpicToDo.Attribute.Intelect;
+                case "Творчество": return EpicToDo.Attribute.Creative;
+                case "Здоровье": return EpicToDo.Attribute.Health;
+                default: throw new InvalidEnumArgumentException("Нет такого значения в атрибуте: " + name);
+            }    
         }
 
     }

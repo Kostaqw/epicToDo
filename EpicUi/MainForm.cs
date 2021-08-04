@@ -63,5 +63,12 @@ namespace EpicUi
             taskAdd.user = user;
             taskAdd.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Abylites abyl = new Abylites();
+            abyl.User = user;
+            abyl.Show();
+        }
     }
 }

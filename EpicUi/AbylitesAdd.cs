@@ -1,20 +1,40 @@
-﻿using System;
+﻿using BLEpicToDo.controller;
+using EpicToDo;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EpicUi
 {
     public partial class AbylitesAdd : Form
     {
+        public User user;
+        TaskController TK;
         public AbylitesAdd()
         {
             InitializeComponent();
+            TaskController TK = new TaskController(user);
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string name;
+            EpicToDo.Attribute attribute;
+            name = textBox1.Text;
+            attribute = TK.StringToAttribute(comboBox1.SelectedItem.ToString());
+            Ability abil = new Ability(name, attribute);
+
+            if (abil != null)
+            {
+                TK.AddAbility(abil);
+                MessageBox.Show($"Способность {name} с атрибутом {attribute} была добавлена", "успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"Не удалось добавить способность", "успех", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

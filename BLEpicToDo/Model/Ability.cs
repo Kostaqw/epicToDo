@@ -21,5 +21,11 @@ namespace EpicToDo
         public virtual ICollection<Daily> Dailies { get; set; }
         public int UserId { get; set; }
         public virtual ICollection<User> Users { get; set; }
+
+        public Ability(string name, Attribute atr)
+        {//TODO: Проверка на корректность
+            Name = name;
+            attribute = atr;
+        }
     }
 }
