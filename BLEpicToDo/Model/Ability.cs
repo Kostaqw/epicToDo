@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-namespace BLEpicToDo.Model
+
+namespace EpicToDo
 {
     public class Ability
     {
         public int AbilityId { get; set; }
 
         public string Name { get; set; }
-
+        public EpicToDo.Attribute attribute { get; set; }
 
         [Key] public int TaskId { get; set; }
         public virtual ICollection<EpicToDo.Task> Tasks { get; set; }

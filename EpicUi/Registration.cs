@@ -34,5 +34,10 @@ namespace EpicUi
                 MessageBox.Show("Такой пользователь уже существует", "Неудача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void Registration_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

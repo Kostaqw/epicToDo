@@ -51,5 +51,10 @@ namespace EpicUi
             Registration reg = new Registration();
             reg.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

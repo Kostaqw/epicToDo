@@ -51,7 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\Controller.cs" />
+    <Compile Include="controller\ControllerAuthor.cs" />
+    <Compile Include="controller\TaskController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ability.cs" />
     <Compile Include="Model\Achive.cs" />
