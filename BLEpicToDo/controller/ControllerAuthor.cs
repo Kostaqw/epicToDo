@@ -14,6 +14,12 @@ namespace BLEpicToDo.controller
 
         protected User User { get; set; }
  
+        /// <summary>
+        /// Поиск в базе данных пользователя по имени
+        /// </summary>
+        /// <param name="login">имя пользователя</param>
+        /// <param name="pasword">пароль</param>
+        /// <returns>возвращает истину если пользователь найден</returns>
         private bool Autorization(string login, string pasword)
         {
             var user = context.Users.FirstOrDefault(p => p.Name == login && p.Password == pasword);
@@ -26,16 +32,33 @@ namespace BLEpicToDo.controller
             }
         }
 
+
+        /// <summary>
+        /// Авторизация
+        /// </summary>
+        /// <param name="login">логин</param>
+        /// <param name="pasword">пароль</param>
+        /// <returns>найденного пользователя</returns>
         public User LogIn(string login, string pasword)
         {
             Autorization(login, pasword);
             return User;
         }
+        
+        /// <summary>
+        /// выход из системы
+        /// </summary>
         public void LogOut()
         {
             User = null;
         }
 
+
+        /// <summary>
+        /// поиск пользователя в БД по имени
+        /// </summary>
+        /// <param name="name">имя</param>
+        /// <returns>возвращает булево значение в зависимости от результата</returns>
         protected bool FindName(string name)
         {
             var user = context.Users.FirstOrDefault(p => p.Name == name);
@@ -45,6 +68,14 @@ namespace BLEpicToDo.controller
             else
                 return false;
         }
+
+
+        /// <summary>
+        /// регистрация нового пользователя с проверкой на наличие такого пользователя
+        /// </summary>
+        /// <param name="login">имя</param>
+        /// <param name="pasword">пароль</param>
+        /// <returns>возвращает булевое значение в зависимости от результата</returns>
         public bool Registration(string login, string pasword)
         {
             if (!FindName(login))

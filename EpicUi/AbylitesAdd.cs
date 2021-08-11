@@ -13,28 +13,31 @@ namespace EpicUi
         TaskController TK;
         public AbylitesAdd()
         {
-            InitializeComponent();
-            TaskController TK = new TaskController(user);
-           
+            InitializeComponent();           
         }
-
+        private void AbylitesAdd_Load(object sender, EventArgs e)
+        {
+            TK = new TaskController(user);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            
             string name;
             EpicToDo.Attribute attribute;
             name = textBox1.Text;
             attribute = TK.StringToAttribute(comboBox1.SelectedItem.ToString());
             Ability abil = new Ability(name, attribute);
 
-            if (abil != null)
+            if (TK.AddAbility(abil))
             {
-                TK.AddAbility(abil);
                 MessageBox.Show($"Способность {name} с атрибутом {attribute} была добавлена", "успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show($"Не удалось добавить способность", "успех", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Не удалось добавить способность", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+  
     }
 }

@@ -16,11 +16,20 @@ namespace BLEpicToDo.controller
         private User User { get; }
         ApContext AC = new ApContext();
 
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="user">Пользователь</param>
         public TaskController(User user)
         {
             User = user;
         }
 
+        /// <summary>
+        /// Получить список всех заданий текущего пользователя
+        /// </summary>
+        /// <returns>писок всех заданий текущего пользователя</returns>
         public List<EpicToDo.Task> GetTasks()
         {
             var Taskef = new List<Task>();
@@ -35,34 +44,76 @@ namespace BLEpicToDo.controller
             return Taskef;
         }
 
+
+        /// <summary>
+        /// Получить список всех способностей текущего пользователя
+        /// </summary>
+        /// <returns>Список всех способностей текущего пользователя</returns>
         public List<EpicToDo.Ability> GetAbillites()
         {
             var abilites = new List<Ability>();
             using (var ApContext = new ApContext())
             {
-                var Taske = from p in ApContext.Abilities
-                            where p.Users == User
+                var abil = from p in ApContext.Abilities
+                            where p.User == User
                             select p;
-                abilites = Taske.ToList();
+                abilites = abil.ToList();
             }
 
             return abilites;
         }
 
-        public void AddAbility(Ability abil)
+        /// <summary>
+        /// Добавляет способность в базу данных для текущего пользователя
+        /// </summary>
+        /// <param name="abil">способность</param>
+        /// <returns>возвращает истину в случае успеха</returns>
+        public bool AddAbility(Ability abil)
         {
-            AC.Abilities.Add(abil);
+            if (!FindAbility(abil.Name))
+            {
+                AC.Abilities.Add(abil);
+                AC.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
+
+        /// <summary>
+        /// Коневертирует текстовое значение в название энама атрибута
+        /// </summary>
+        /// <param name="name">название</param>
+        /// <returns>возвращает атрибут типа энам</returns>
         public EpicToDo.Attribute StringToAttribute(string name)
         {
             switch (name)
             {
                 case "Сила": return EpicToDo.Attribute.Strength;
-                case "Интилект": return EpicToDo.Attribute.Intelect;
+                case "Интеллект": return EpicToDo.Attribute.Intelect;
                 case "Творчество": return EpicToDo.Attribute.Creative;
                 case "Здоровье": return EpicToDo.Attribute.Health;
                 default: throw new InvalidEnumArgumentException("Нет такого значения в атрибуте: " + name);
             }    
+        }
+
+        /// <summary>
+        /// Поиск способности в базе данных
+        /// </summary>
+        /// <param name="name">название способности</param>
+        /// <returns>возращает истину если способность найдена</returns>
+        protected bool FindAbility(string name)
+        {
+            var ability = AC.Abilities.FirstOrDefault(p => p.Name == name);
+
+            if (ability != null)
+                return true;
+            else
+                return false;
         }
 
     }

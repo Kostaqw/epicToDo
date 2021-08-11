@@ -17,7 +17,7 @@ namespace EpicToDo
     }
    public class User
     {
-
+        #region параметры
         [Key] public int UserId { get; set; }
         public string Name { get; set; }
         public string Password { get; set; } //TODO: реализовать хэширование
@@ -32,11 +32,10 @@ namespace EpicToDo
         //TODO: параметры для кастомизации
 
         public virtual ICollection<Task> Tasks { get; set; }
-        public virtual ICollection<Daily> Dailies { get; set; }
         
         public virtual ICollection<Ability> Abilities { get; set; }
         public virtual ICollection<Achive> Achives { get; set; }
-
+        #endregion
         public User(string name, string password)
         {
             //TODO: услажнить проверку (пробелы, количество символов)

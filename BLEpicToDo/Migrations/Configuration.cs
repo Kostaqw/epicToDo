@@ -9,9 +9,9 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
-        
+
         protected override void Seed(BLEpicToDo.Model.ApContext context)
         {
             //  This method will be called after migrating to the latest version.

@@ -16,12 +16,7 @@ namespace EpicToDo
         public DateTime DateCreate { get; set; }
         public bool notification { get; set; }
         
-        
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
 
-        public int AbilityId { get; set; }
-        public virtual Ability Ability { get; set; }
 
     }
 }

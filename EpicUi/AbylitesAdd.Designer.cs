@@ -67,7 +67,7 @@ namespace EpicUi
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Сила",
-            "Интилект",
+            "Интеллект",
             "Творчество",
             "Здоровье"});
             this.comboBox1.Location = new System.Drawing.Point(78, 32);
@@ -96,6 +96,7 @@ namespace EpicUi
             this.Controls.Add(this.button1);
             this.Name = "AbylitesAdd";
             this.Text = "AbylitesAdd";
+            this.Load += new System.EventHandler(this.AbylitesAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
