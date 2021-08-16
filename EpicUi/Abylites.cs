@@ -38,19 +38,27 @@ namespace EpicUi
             List<Ability> abilities = new List<Ability>();
             List<ProgressBar> progressBars = new List<ProgressBar>();
             List<Label> labels = new List<Label>();
+            
+            int index = 0;
+            int dy = 0;
 
+            EpicToDo.Attribute atr = TK.StringToAttribute(comboBox1.SelectedItem.ToString());
+            
 
-            abilities = TK.GetAbillites();
-            CreateAbilytyViev(1, 10, 10);
+            abilities = TK.GetAbillites(atr);
+            
             foreach (var abil in abilities)
             {
-
+                this.Controls.Add(CreateAbilytyViev(index, 10, 10+dy));
+                index++;
+                dy += 20;
+                
             }
 
    
         }
 
-        private void CreateAbilytyViev(int number, int x, int y)
+        private ProgressBar CreateAbilytyViev(int number, int x, int y)
         {
             ProgressBar expanation = new ProgressBar();
 
@@ -60,6 +68,13 @@ namespace EpicUi
             expanation.Size = new System.Drawing.Size(100, 23);
             expanation.TabIndex = number;
             expanation.Value = 0;
+
+            return expanation;
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

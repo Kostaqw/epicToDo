@@ -27,10 +27,11 @@ namespace EpicToDo
 
 
 
-        public Ability(string name, Attribute atr)
+        public Ability(string name, Attribute atr, User user)
         {//TODO: Проверка на корректность
             Name = name;
             attribute = atr;
+            User = user;
             MaxExp = 100;
         }
 

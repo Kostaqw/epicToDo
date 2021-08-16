@@ -64,6 +64,22 @@ namespace BLEpicToDo.controller
         }
 
         /// <summary>
+        /// Получить список всех способностей текущего пользователя одного атрибута
+        /// </summary>
+        /// <returns>Список всех способностей текущего пользователя конкретного атрибута</returns>
+        public List<EpicToDo.Ability> GetAbillites(EpicToDo.Attribute attribute)
+        {
+            var abilites = new List<Ability>();
+            using (var ApContext = new ApContext())
+            {
+                var abil = ApContext.Abilities.Where(o => o.User.UserId == User.UserId && o.attribute == attribute);
+                abilites = abil.ToList();
+            }
+
+            return abilites;
+        }
+
+        /// <summary>
         /// Добавляет способность в базу данных для текущего пользователя
         /// </summary>
         /// <param name="abil">способность</param>

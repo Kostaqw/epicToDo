@@ -26,7 +26,7 @@ namespace EpicUi
             EpicToDo.Attribute attribute;
             name = textBox1.Text;
             attribute = TK.StringToAttribute(comboBox1.SelectedItem.ToString());
-            Ability abil = new Ability(name, attribute);
+            Ability abil = new Ability(name, attribute, user);
 
             if (TK.AddAbility(abil))
             {

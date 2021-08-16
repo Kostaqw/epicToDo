@@ -58,7 +58,7 @@ namespace EpicUi
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Сила",
-            "Интелект",
+            "Интеллект",
             "Творчество",
             "Здоровье"});
             this.comboBox1.Location = new System.Drawing.Point(337, 12);
@@ -66,6 +66,7 @@ namespace EpicUi
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // Abylites
             // 
