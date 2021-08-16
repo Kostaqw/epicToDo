@@ -13,23 +13,30 @@ namespace EpicToDo
         [Key] public int AbilityId { get; set; }
 
         public string Name { get; set; }
+       
+        public int Level { get; set; }
+
+        public int Exp { get; set; }
+
+        public int MaxExp { get; set; }
+        
         public EpicToDo.Attribute attribute { get; set; }
 
-        public int TaskId { get; set; }
-        public virtual ICollection<EpicToDo.Task> Tasks { get; set; }
        
-        
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
+        public User User { get; set; }
+
+
 
         public Ability(string name, Attribute atr)
         {//TODO: Проверка на корректность
             Name = name;
             attribute = atr;
+            MaxExp = 100;
         }
 
         public Ability()
         {
+            MaxExp = 100;
         }
     }
 }

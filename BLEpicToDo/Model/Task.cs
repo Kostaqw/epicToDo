@@ -26,11 +26,12 @@ namespace EpicToDo
         public string Description { get; set; }
 
 
-
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        public int AbilityId { get; set; }
-        public virtual Ability Ability { get; set; }
+        public Task()
+        {
+           
+        }
     }
 }

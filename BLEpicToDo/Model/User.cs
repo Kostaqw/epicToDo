@@ -23,6 +23,7 @@ namespace EpicToDo
         public string Password { get; set; } //TODO: реализовать хэширование
         public int Level { get; set; }
         public int Exp { get; set; }
+        public int MaxExp { get; set; }
         public int Strength { get; set; }
         public int Intelect { get; set; }
         public int Creative { get; set; }
@@ -31,10 +32,9 @@ namespace EpicToDo
         //TODO: параметры для статистики
         //TODO: параметры для кастомизации
 
-        public virtual ICollection<Task> Tasks { get; set; }
-        
-        public virtual ICollection<Ability> Abilities { get; set; }
-        public virtual ICollection<Achive> Achives { get; set; }
+        public List<Task> Tasks { get; set; }
+        public List<Ability> Abilities { get; set; }
+        public List<Daily> Dailies { get; set; }
         #endregion
         public User(string name, string password)
         {
@@ -51,11 +51,12 @@ namespace EpicToDo
 
             Name = name;
             Password = password;
+            MaxExp = 100;
         }
 
         public User()
         {
-
+            MaxExp = 100;
         }
     }
 }

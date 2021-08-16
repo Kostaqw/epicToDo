@@ -7,13 +7,13 @@ namespace BLEpicToDo.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddCompanyMigration : IMigrationMetadata
+    public sealed partial class m1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCompanyMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(m1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108111100396_AddCompanyMigration"; }
+            get { return "202108161732063_m1"; }
         }
         
         string IMigrationMetadata.Source

@@ -55,7 +55,7 @@ namespace BLEpicToDo.controller
             using (var ApContext = new ApContext())
             {
                 var abil = from p in ApContext.Abilities
-                            where p.User == User
+                           where p.User.UserId == User.UserId
                             select p;
                 abilites = abil.ToList();
             }

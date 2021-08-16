@@ -53,9 +53,9 @@
   <ItemGroup>
     <Compile Include="controller\ControllerAuthor.cs" />
     <Compile Include="controller\TaskController.cs" />
-    <Compile Include="Migrations\202108111100396_AddCompanyMigration.cs" />
-    <Compile Include="Migrations\202108111100396_AddCompanyMigration.designer.cs">
-      <DependentUpon>202108111100396_AddCompanyMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202108161732063_m1.cs" />
+    <Compile Include="Migrations\202108161732063_m1.designer.cs">
+      <DependentUpon>202108161732063_m1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ability.cs" />
@@ -71,8 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108111100396_AddCompanyMigration.resx">
-      <DependentUpon>202108111100396_AddCompanyMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108161732063_m1.resx">
+      <DependentUpon>202108161732063_m1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
