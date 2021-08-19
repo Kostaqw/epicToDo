@@ -23,7 +23,8 @@ namespace EpicToDo
         public EpicToDo.Attribute attribute { get; set; }
 
        
-        public User User { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
 
 
 
@@ -31,7 +32,7 @@ namespace EpicToDo
         {//TODO: Проверка на корректность
             Name = name;
             attribute = atr;
-            User = user;
+            UserId = user.UserId;
             MaxExp = 100;
         }
 
