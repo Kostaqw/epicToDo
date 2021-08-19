@@ -21,10 +21,12 @@ namespace EpicToDo
         public Dificults Dificult { get; set; }
         public bool notification { get; set; }
       
+        public bool complite { get; set; }
         public string Name { get; set; }
 
         public string Description { get; set; }
 
+        public string Ability { get; set; }
 
         public int UserId { get; set; }
         public virtual User User { get; set; }
@@ -32,6 +34,16 @@ namespace EpicToDo
         public Task()
         {
            
+        }
+
+        public Task(string name, string description, string ablity, Dificults dificults, int userId)
+        {
+            Name = name;
+            Description = description;
+            Dificult = dificults;
+            UserId = userId;
+            Ability = ablity;
+            complite = false;
         }
     }
 }

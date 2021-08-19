@@ -26,6 +26,8 @@ namespace BLEpicToDo.controller
             User = user;
         }
 
+
+        #region Получение данных из БД
         /// <summary>
         /// Получить список всех заданий текущего пользователя
         /// </summary>
@@ -78,7 +80,9 @@ namespace BLEpicToDo.controller
 
             return abilites;
         }
-
+        #endregion
+       
+        
         /// <summary>
         /// Добавляет способность в базу данных для текущего пользователя
         /// </summary>
@@ -101,6 +105,36 @@ namespace BLEpicToDo.controller
         }
 
         /// <summary>
+        /// Добавляет задачи в БД
+        /// </summary>
+        /// <param name="name">название задачи</param>
+        /// <param name="description">описание задачи</param>
+        /// <param name="ability">название способности к которой привязана задача может быть пустым</param>
+        /// <param name="dificults">сложность</param>
+        /// <param name="userId">id пользователя</param>
+        /// <returns>возвращает истину в случае успеха</returns>
+        public bool TaskAdd(string name, string description, string ability, Dificults dificults, int userId)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException($"{nameof(name)} не может быть пустым или иметь значение null", nameof(name));
+            }
+
+            if (!FindAUser(userId))
+            {
+                throw new ArgumentException($"пользователь с данным Id: {nameof(userId)} не найден");
+            }
+
+            Task task = new Task(name, description, ability, dificults, userId);
+            AC.Tasks.Add(task);
+            AC.SaveChanges();
+            return true;
+        }
+
+
+
+
+        /// <summary>
         /// Коневертирует текстовое значение в название энама атрибута
         /// </summary>
         /// <param name="name">название</param>
@@ -117,6 +151,11 @@ namespace BLEpicToDo.controller
             }    
         }
 
+
+
+
+
+
         /// <summary>
         /// Поиск способности в базе данных
         /// </summary>
@@ -132,5 +171,34 @@ namespace BLEpicToDo.controller
                 return false;
         }
 
+        /// <summary>
+        /// Поиск пользователя в базе данных
+        /// </summary>
+        /// <param userId="Id пользователя">Id пользователя</param>
+        /// <returns>возращает истину если пользователь найдена</returns>
+        protected bool FindAUser(int userId)
+        {
+            var user = AC.Users.FirstOrDefault(p => p.UserId == userId);
+
+            if (user != null)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Поиск задачи в базе данных
+        /// </summary>
+        /// <param name="name">название задачи</param>
+        /// <returns>возращает истину если задача найдена и не выполнена найдена</returns>
+        protected bool FindTask(string name)
+        {
+            var task = AC.Tasks.FirstOrDefault(p => p.Name == name && p.complite == false); ;
+
+            if (task != null)
+                return true;
+            else
+                return false;
+        }
     }
 }

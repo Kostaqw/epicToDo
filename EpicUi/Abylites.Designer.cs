@@ -35,9 +35,9 @@ namespace EpicUi
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 17);
+            this.button1.Location = new System.Drawing.Point(403, 39);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -51,7 +51,7 @@ namespace EpicUi
             "Интеллект",
             "Творчество",
             "Здоровье"});
-            this.comboBox1.Location = new System.Drawing.Point(337, 12);
+            this.comboBox1.Location = new System.Drawing.Point(403, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
@@ -62,7 +62,7 @@ namespace EpicUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(536, 450);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Name = "Abylites";
