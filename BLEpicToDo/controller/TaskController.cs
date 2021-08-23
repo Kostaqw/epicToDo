@@ -28,22 +28,20 @@ namespace BLEpicToDo.controller
 
 
         #region Получение данных из БД
+
         /// <summary>
         /// Получить список всех заданий текущего пользователя
         /// </summary>
         /// <returns>писок всех заданий текущего пользователя</returns>
         public List<EpicToDo.Task> GetTasks()
         {
-            var Taskef = new List<Task>();
+            var tasks = new List<Task>();
             using (var ApContext = new ApContext())
             {
-                var Taske = from p in ApContext.Tasks
-                            where p.User == User
-                            select p;
-                Taskef = Taske.ToList();
+                tasks = ApContext.Tasks.Where<Task>(o => o.User.UserId == User.UserId).ToList();              
             }
 
-            return Taskef;
+            return tasks;
         }
 
 
@@ -81,7 +79,23 @@ namespace BLEpicToDo.controller
             return abilites;
         }
         #endregion
-       
+
+        public void EditTask(Task task, string name, string description, string ability, Dificults dificults)
+        {
+            var fTask = AC.Tasks.First(o => o.Id == task.Id);
+            if (fTask != null)
+            {
+                fTask.Name = name;
+                fTask.Description = description;
+                fTask.Ability = ability;
+                fTask.Dificult = dificults;
+                AC.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentNullException("Данной задачи нет в базе данных", nameof(task));
+            }
+        }
         
         /// <summary>
         /// Добавляет способность в базу данных для текущего пользователя
@@ -187,11 +201,11 @@ namespace BLEpicToDo.controller
         }
 
         /// <summary>
-        /// Поиск задачи в базе данных
+        /// Проверка есть ли в базе данных такая задача.
         /// </summary>
         /// <param name="name">название задачи</param>
         /// <returns>возращает истину если задача найдена и не выполнена найдена</returns>
-        protected bool FindTask(string name)
+        protected bool CheckTask(string name)
         {
             var task = AC.Tasks.FirstOrDefault(p => p.Name == name && p.complite == false); ;
 
@@ -200,5 +214,29 @@ namespace BLEpicToDo.controller
             else
                 return false;
         }
+
+        /// <summary>
+        /// Поиск в БД задачи по имени 
+        /// </summary>
+        /// <param name="name">название задачи</param>
+        /// <param name="comlite">искать ли завершенную задачу</param>
+        /// <returns>возвращает задачу или null</returns>
+        public Task FindTask(string name, bool comlite = false)
+        {
+            Task task;
+            if (!comlite)
+            {
+                task = AC.Tasks.FirstOrDefault(p => p.Name == name && p.complite == false);
+            }
+            else
+            {
+                task = AC.Tasks.FirstOrDefault(p => p.Name == name);
+            }
+            return task;
+
+        }
+
+
+
     }
 }

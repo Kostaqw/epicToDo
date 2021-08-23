@@ -32,12 +32,12 @@
             this.TaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskDificult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abbility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ControllTasks = new System.Windows.Forms.GroupBox();
             this.BCompleteTask = new System.Windows.Forms.Button();
             this.BEditTask = new System.Windows.Forms.Button();
             this.BDeleteTask = new System.Windows.Forms.Button();
             this.BAddTask = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ControllTasks.SuspendLayout();
@@ -53,11 +53,15 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
             this.TaskDescription,
-            this.TaskDificult});
+            this.TaskDificult,
+            this.Abbility});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(339, 424);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // TaskName
             // 
@@ -76,6 +80,12 @@
             this.TaskDificult.HeaderText = "Сложность";
             this.TaskDificult.Name = "TaskDificult";
             this.TaskDificult.ReadOnly = true;
+            // 
+            // Abbility
+            // 
+            this.Abbility.HeaderText = "Способность";
+            this.Abbility.Name = "Abbility";
+            this.Abbility.ReadOnly = true;
             // 
             // ControllTasks
             // 
@@ -107,6 +117,7 @@
             this.BEditTask.TabIndex = 2;
             this.BEditTask.Text = "Редактировать";
             this.BEditTask.UseVisualStyleBackColor = true;
+            this.BEditTask.Click += new System.EventHandler(this.BEditTask_Click);
             // 
             // BDeleteTask
             // 
@@ -127,20 +138,6 @@
             this.BAddTask.UseVisualStyleBackColor = true;
             this.BAddTask.Click += new System.EventHandler(this.BAddTask_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Задачи",
-            "Повторяющиеся задачи",
-            "Выполненые задачи"});
-            this.comboBox1.Location = new System.Drawing.Point(369, 154);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 21);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
-            this.comboBox1.TabIndexChanged += new System.EventHandler(this.comboBox1_TabIndexChanged);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(369, 413);
@@ -157,7 +154,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 448);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ControllTasks);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MainForm";
@@ -177,10 +173,10 @@
         private System.Windows.Forms.Button BEditTask;
         private System.Windows.Forms.Button BDeleteTask;
         private System.Windows.Forms.Button BAddTask;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskDificult;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Abbility;
     }
 }

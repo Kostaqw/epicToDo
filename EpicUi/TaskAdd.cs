@@ -7,7 +7,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EpicUi
@@ -15,8 +14,11 @@ namespace EpicUi
     public partial class TaskAdd : Form
     {
         public User user;
+        public Task task;
 
         private TaskController TK;
+
+        public bool edit = false;
         public TaskAdd()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace EpicUi
 
         private void TaskAdd_Load(object sender, EventArgs e)
         {
+
             TK = new TaskController(user);
             var abil = TK.GetAbillites();
             foreach (var item in abil)
@@ -35,24 +38,32 @@ namespace EpicUi
             comboBox2.Items.Add("Средний");
             comboBox2.Items.Add("Тяжелый");
             comboBox2.Items.Add("Легендарный");
+            if (edit)
+            {
+                textBox1.Text = task.Name;
+                textBox2.Text = task.Description;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name = textBox1.Text;
-            string description = textBox2.Text;
-            string ablity = comboBox1.SelectedItem.ToString();
-            Dificults dificult;
-            switch (comboBox2.SelectedIndex)
+            if (!edit)
             {
-                case 0: { dificult = Dificults.easy; break; }
-                case 1: { dificult = Dificults.midle; break; }
-                case 2: { dificult = Dificults.hard; break; }
-                case 3: { dificult = Dificults.legendary; break; }
-                default: { dificult = Dificults.easy; break; }
-            }
+                string name = textBox1.Text;
+                string description = textBox2.Text;
+                string ablity = comboBox1.SelectedItem.ToString();
+                Dificults dificult;
+                switch (comboBox2.SelectedIndex)
+                {
+                    case 0: { dificult = Dificults.easy; break; }
+                    case 1: { dificult = Dificults.midle; break; }
+                    case 2: { dificult = Dificults.hard; break; }
+                    case 3: { dificult = Dificults.legendary; break; }
+                    default: { dificult = Dificults.easy; break; }
+                }
 
-            TK.TaskAdd(name, description, ablity, dificult, user.UserId);
+                TK.TaskAdd(name, description, ablity, dificult, user.UserId);
+            }
         }
     }
 }

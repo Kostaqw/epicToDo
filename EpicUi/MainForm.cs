@@ -19,43 +19,34 @@ namespace EpicUi
         public User user;
         
         TaskController TC;
-        
+
+        string CurrentTaskName;
         public MainForm()
         {
             InitializeComponent();
-            TC = new TaskController(user);
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            TC = new TaskController(user);
             Tasks = TC.GetTasks();
             if (Tasks.Count != 0)
-            { 
+            {
+                foreach (var task in Tasks)
+                {
+                    dataGridView1.Rows.Add(task.Name, task.Description, task.Dificult, task.Ability.ToString());
+                }
+            }
+            if (dataGridView1.Rows.Count != 0)
+            {
+                string currentRow = dataGridView1.SelectedRows[0].ge
+                MessageBox.Show(currentRow);
                 
             }
         }
 
-        private void comboBox1_TabIndexChanged(object sender, EventArgs e)
-        {
-   
-        }
 
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-            if (comboBox1.SelectedIndex == 0)
-            {
-                dataGridView1.Columns.Add("TaskName", "Задание");
-                dataGridView1.Columns.Add("TaskDescription", "Описание");
-                dataGridView1.Columns.Add("TaskDificult", "Сложность");
-            }
-            if (comboBox1.SelectedIndex == 1)
-            {
-                dataGridView1.Columns.Add("TaskName", "Задание");
-                dataGridView1.Columns.Add("TaskDescription", "Описание");
-                dataGridView1.Columns.Add("TaskDificult", "Сложность");
-            }
-        }
 
         private void BAddTask_Click(object sender, EventArgs e)
         {
@@ -69,6 +60,19 @@ namespace EpicUi
             Abylites abyl = new Abylites();
             abyl.User = user;
             abyl.Show();
+        }
+
+        private void BEditTask_Click(object sender, EventArgs e)
+        {
+            TaskAdd taskAdd = new TaskAdd();
+            taskAdd.user = user;
+            taskAdd.edit = true;
+            taskAdd.Show();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
