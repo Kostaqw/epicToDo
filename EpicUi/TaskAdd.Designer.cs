@@ -145,6 +145,7 @@ namespace EpicUi
             this.Controls.Add(this.button1);
             this.Name = "TaskAdd";
             this.Text = "Задача";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskAdd_FormClosing);
             this.Load += new System.EventHandler(this.TaskAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

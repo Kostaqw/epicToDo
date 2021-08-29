@@ -15,14 +15,14 @@ namespace EpicUi
     {
         public User user;
         public Task task;
-
+        private MainForm MainForm;
         private TaskController TK;
 
         public bool edit = false;
-        public TaskAdd()
+        public TaskAdd(MainForm form)
         {
             InitializeComponent();
-           
+            MainForm = form;
         }
 
         private void TaskAdd_Load(object sender, EventArgs e)
@@ -63,7 +63,13 @@ namespace EpicUi
                 }
 
                 TK.TaskAdd(name, description, ablity, dificult, user.UserId);
+                MessageBox.Show($"Задание: {name} было успешно добавлено");
             }
+        }
+
+        private void TaskAdd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MainForm.UpdateTaskTable();
         }
     }
 }

@@ -30,6 +30,39 @@ namespace EpicUi
         private void MainForm_Load(object sender, EventArgs e)
         {
             TC = new TaskController(user);
+            UpdateTaskTable();
+        }
+
+        private void BAddTask_Click(object sender, EventArgs e)
+        {
+            TaskAdd taskAdd = new TaskAdd(this);
+            taskAdd.user = user;
+            taskAdd.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Abylites abyl = new Abylites();
+            abyl.User = user;
+            abyl.ShowDialog();
+        }
+
+        private void BEditTask_Click(object sender, EventArgs e)
+        {
+            TaskAdd taskAdd = new TaskAdd(this);
+            taskAdd.user = user;
+            taskAdd.edit = true;
+            taskAdd.ShowDialog();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            CurrentTaskName = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        public void UpdateTaskTable()
+        {
+            dataGridView1.Rows.Clear();
             Tasks = TC.GetTasks();
             if (Tasks.Count != 0)
             {
@@ -37,42 +70,8 @@ namespace EpicUi
                 {
                     dataGridView1.Rows.Add(task.Name, task.Description, task.Dificult, task.Ability.ToString());
                 }
+                CurrentTaskName = Tasks[0].Name;
             }
-            if (dataGridView1.Rows.Count != 0)
-            {
-                string currentRow = dataGridView1.SelectedRows[0].ge
-                MessageBox.Show(currentRow);
-                
-            }
-        }
-
-
-
-        private void BAddTask_Click(object sender, EventArgs e)
-        {
-            TaskAdd taskAdd = new TaskAdd();
-            taskAdd.user = user;
-            taskAdd.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Abylites abyl = new Abylites();
-            abyl.User = user;
-            abyl.Show();
-        }
-
-        private void BEditTask_Click(object sender, EventArgs e)
-        {
-            TaskAdd taskAdd = new TaskAdd();
-            taskAdd.user = user;
-            taskAdd.edit = true;
-            taskAdd.Show();
-        }
-
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
