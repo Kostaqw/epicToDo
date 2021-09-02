@@ -59,7 +59,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(339, 424);
+            this.dataGridView1.Size = new System.Drawing.Size(447, 424);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -93,7 +93,7 @@
             this.ControllTasks.Controls.Add(this.BEditTask);
             this.ControllTasks.Controls.Add(this.BDeleteTask);
             this.ControllTasks.Controls.Add(this.BAddTask);
-            this.ControllTasks.Location = new System.Drawing.Point(369, 12);
+            this.ControllTasks.Location = new System.Drawing.Point(465, 12);
             this.ControllTasks.Name = "ControllTasks";
             this.ControllTasks.Size = new System.Drawing.Size(157, 136);
             this.ControllTasks.TabIndex = 1;
@@ -140,7 +140,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(369, 413);
+            this.button1.Location = new System.Drawing.Point(465, 413);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 23);
             this.button1.TabIndex = 3;
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 448);
+            this.ClientSize = new System.Drawing.Size(623, 448);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ControllTasks);
             this.Controls.Add(this.dataGridView1);

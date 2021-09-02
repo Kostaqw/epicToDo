@@ -10,10 +10,10 @@ namespace EpicToDo
 {
     public enum Dificults
     { 
-        easy,
-        midle,
-        hard,
-        legendary
+        Легкий,
+        Средний,
+        Сложный,
+        Легендарный
     }
     public class Task
     {

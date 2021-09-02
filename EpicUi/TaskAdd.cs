@@ -14,7 +14,7 @@ namespace EpicUi
     public partial class TaskAdd : Form
     {
         public User user;
-        public Task task;
+        public Task Task;
         private MainForm MainForm;
         private TaskController TK;
 
@@ -23,6 +23,11 @@ namespace EpicUi
         {
             InitializeComponent();
             MainForm = form;
+        }
+
+        public TaskAdd(MainForm form, Task task):this(form)
+        {
+            Task = task ?? throw new ArgumentNullException("task не может быть равен null",nameof(task));
         }
 
         private void TaskAdd_Load(object sender, EventArgs e)
@@ -34,36 +39,42 @@ namespace EpicUi
             {
                 comboBox1.Items.Add(item.Name);
             }
-            comboBox2.Items.Add("Легкий");
-            comboBox2.Items.Add("Средний");
-            comboBox2.Items.Add("Тяжелый");
-            comboBox2.Items.Add("Легендарный");
+
+            comboBox2.DataSource = Enum.GetValues(typeof(Dificults));
+
             if (edit)
             {
-                textBox1.Text = task.Name;
-                textBox2.Text = task.Description;
+                textBox1.Text = Task.Name;
+                textBox2.Text = Task.Description;
+                comboBox2.SelectedItem = Task.Dificult;
+                comboBox1.SelectedItem = Task.Ability;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string name = textBox1.Text;
+            string description = textBox2.Text;
+            string ablity = comboBox1.SelectedItem.ToString();
+            Dificults dificult;
+            switch (comboBox2.SelectedIndex)
+            {
+                case 0: { dificult = Dificults.Легкий; break; }
+                case 1: { dificult = Dificults.Средний; break; }
+                case 2: { dificult = Dificults.Сложный; break; }
+                case 3: { dificult = Dificults.Легендарный; break; }
+                default: { dificult = Dificults.Легкий; break; }
+            }
+
             if (!edit)
             {
-                string name = textBox1.Text;
-                string description = textBox2.Text;
-                string ablity = comboBox1.SelectedItem.ToString();
-                Dificults dificult;
-                switch (comboBox2.SelectedIndex)
-                {
-                    case 0: { dificult = Dificults.easy; break; }
-                    case 1: { dificult = Dificults.midle; break; }
-                    case 2: { dificult = Dificults.hard; break; }
-                    case 3: { dificult = Dificults.legendary; break; }
-                    default: { dificult = Dificults.easy; break; }
-                }
-
                 TK.TaskAdd(name, description, ablity, dificult, user.UserId);
                 MessageBox.Show($"Задание: {name} было успешно добавлено");
+            }
+            else
+            {
+                TK.EditTask(Task, name, description, ablity, dificult);
+                MessageBox.Show($"Задание: {name} было успешно изменено");
             }
         }
 

@@ -19,8 +19,9 @@ namespace EpicUi
         public User user;
         
         TaskController TC;
-
+        Task CurrentTask;
         string CurrentTaskName;
+
         public MainForm()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace EpicUi
 
         private void BEditTask_Click(object sender, EventArgs e)
         {
-            TaskAdd taskAdd = new TaskAdd(this);
+            TaskAdd taskAdd = new TaskAdd(this, CurrentTask);
             taskAdd.user = user;
             taskAdd.edit = true;
             taskAdd.ShowDialog();
@@ -58,6 +59,7 @@ namespace EpicUi
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             CurrentTaskName = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            CurrentTask = TC.FindTask(CurrentTaskName);
         }
 
         public void UpdateTaskTable()
