@@ -108,6 +108,7 @@
             this.BCompleteTask.TabIndex = 3;
             this.BCompleteTask.Text = "Выполнено";
             this.BCompleteTask.UseVisualStyleBackColor = true;
+            this.BCompleteTask.Click += new System.EventHandler(this.BCompleteTask_Click);
             // 
             // BEditTask
             // 
@@ -127,6 +128,7 @@
             this.BDeleteTask.TabIndex = 1;
             this.BDeleteTask.Text = "Удалить";
             this.BDeleteTask.UseVisualStyleBackColor = true;
+            this.BDeleteTask.Click += new System.EventHandler(this.BDeleteTask_Click);
             // 
             // BAddTask
             // 

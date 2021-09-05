@@ -50,10 +50,17 @@ namespace EpicUi
 
         private void BEditTask_Click(object sender, EventArgs e)
         {
-            TaskAdd taskAdd = new TaskAdd(this, CurrentTask);
-            taskAdd.user = user;
-            taskAdd.edit = true;
-            taskAdd.ShowDialog();
+            if (CurrentTask != null)
+            {
+                TaskAdd taskAdd = new TaskAdd(this, CurrentTask);
+                taskAdd.user = user;
+                taskAdd.edit = true;
+                taskAdd.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрано ни одно задание", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -70,9 +77,42 @@ namespace EpicUi
             {
                 foreach (var task in Tasks)
                 {
-                    dataGridView1.Rows.Add(task.Name, task.Description, task.Dificult, task.Ability.ToString());
+                    if (task.complite == false)
+                    {
+                        dataGridView1.Rows.Add(task.Name, task.Description, task.Dificult, task.Ability.ToString());
+                    }
                 }
                 CurrentTaskName = Tasks[0].Name;
+            }
+        }
+
+        private void BCompleteTask_Click(object sender, EventArgs e)
+        {
+            if (CurrentTask != null)
+            {
+                TC.EditTask(CurrentTask, true);
+                UpdateTaskTable();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрано ни одно задание", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BDeleteTask_Click(object sender, EventArgs e)
+        {
+            if (CurrentTask != null)
+            {
+                DialogResult result = MessageBox.Show($"Вы хотите удалить задание {CurrentTask.Name}?", "Удалить", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    TC.DeleteTask(CurrentTask);
+                    UpdateTaskTable();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не выбрано ни одно задание", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

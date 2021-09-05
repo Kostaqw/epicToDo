@@ -96,7 +96,21 @@ namespace BLEpicToDo.controller
                 throw new ArgumentNullException("Данной задачи нет в базе данных", nameof(task));
             }
         }
-        
+
+        public void EditTask(Task task, bool isComplite)
+        {
+            var fTask = AC.Tasks.First(o => o.Id == task.Id);
+            if (fTask != null)
+            {
+                fTask.complite = isComplite;
+                AC.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentNullException("Данной задачи нет в базе данных", nameof(task));
+            }
+        }
+
         /// <summary>
         /// Добавляет способность в базу данных для текущего пользователя
         /// </summary>
@@ -143,6 +157,24 @@ namespace BLEpicToDo.controller
             AC.Tasks.Add(task);
             AC.SaveChanges();
             return true;
+        }
+
+
+
+
+        /// <summary>
+        /// Удаляет задание из базы данных
+        /// </summary>
+        /// <param name="task">Задание</param>
+        public void DeleteTask(Task task)
+        {
+            if (task is null)
+            {
+                throw new ArgumentNullException("Задача не может быть bnull", nameof(task));
+            }
+
+            AC.Tasks.Remove(task);
+            AC.SaveChanges();
         }
 
 
