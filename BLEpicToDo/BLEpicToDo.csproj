@@ -51,8 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\ControllerAuthor.cs" />
+    <Compile Include="controller\AuthorController.cs" />
     <Compile Include="controller\TaskController.cs" />
+    <Compile Include="controller\UserController.cs" />
     <Compile Include="Migrations\202108172003333_m1.cs" />
     <Compile Include="Migrations\202108172003333_m1.designer.cs">
       <DependentUpon>202108172003333_m1.cs</DependentUpon>

@@ -19,6 +19,7 @@ namespace EpicUi
         public User user;
         
         TaskController TC;
+        UserController UC;
         Task CurrentTask;
         string CurrentTaskName;
 
@@ -31,6 +32,8 @@ namespace EpicUi
         private void MainForm_Load(object sender, EventArgs e)
         {
             TC = new TaskController(user);
+            UC = new UserController(user);
+
             UpdateTaskTable();
         }
 
@@ -114,6 +117,12 @@ namespace EpicUi
             {
                 MessageBox.Show("Не выбрано ни одно задание", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Character charForm = new Character(this, user);
+            charForm.ShowDialog();
         }
     }
 }
