@@ -34,30 +34,36 @@ namespace EpicUi
             this.AgeLabel = new System.Windows.Forms.Label();
             this.LvlLabel = new System.Windows.Forms.Label();
             this.ExpBar = new System.Windows.Forms.ProgressBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.ExpLabel = new System.Windows.Forms.Label();
+            this.StrengthLabel = new System.Windows.Forms.Label();
             this.StrengthBar = new System.Windows.Forms.ProgressBar();
-            this.label6 = new System.Windows.Forms.Label();
+            this.IntelectLabel = new System.Windows.Forms.Label();
             this.IntelectBar = new System.Windows.Forms.ProgressBar();
-            this.label7 = new System.Windows.Forms.Label();
+            this.CreativeLabel = new System.Windows.Forms.Label();
             this.CreativeBar = new System.Windows.Forms.ProgressBar();
-            this.label8 = new System.Windows.Forms.Label();
+            this.HealthLabel = new System.Windows.Forms.Label();
             this.HealthBar = new System.Windows.Forms.ProgressBar();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.персонажToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьАватарToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(204, 205);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(12, 223);
+            this.NameLabel.Location = new System.Drawing.Point(12, 238);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(32, 13);
             this.NameLabel.TabIndex = 1;
@@ -66,7 +72,7 @@ namespace EpicUi
             // AgeLabel
             // 
             this.AgeLabel.AutoSize = true;
-            this.AgeLabel.Location = new System.Drawing.Point(12, 250);
+            this.AgeLabel.Location = new System.Drawing.Point(12, 265);
             this.AgeLabel.Name = "AgeLabel";
             this.AgeLabel.Size = new System.Drawing.Size(52, 13);
             this.AgeLabel.TabIndex = 2;
@@ -75,7 +81,7 @@ namespace EpicUi
             // LvlLabel
             // 
             this.LvlLabel.AutoSize = true;
-            this.LvlLabel.Location = new System.Drawing.Point(12, 275);
+            this.LvlLabel.Location = new System.Drawing.Point(12, 290);
             this.LvlLabel.Name = "LvlLabel";
             this.LvlLabel.Size = new System.Drawing.Size(54, 13);
             this.LvlLabel.TabIndex = 3;
@@ -83,107 +89,141 @@ namespace EpicUi
             // 
             // ExpBar
             // 
-            this.ExpBar.Location = new System.Drawing.Point(222, 27);
+            this.ExpBar.Location = new System.Drawing.Point(222, 42);
             this.ExpBar.Name = "ExpBar";
             this.ExpBar.Size = new System.Drawing.Size(228, 23);
             this.ExpBar.TabIndex = 4;
             // 
-            // label4
+            // ExpLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(222, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Опыт:";
+            this.ExpLabel.AutoSize = true;
+            this.ExpLabel.Location = new System.Drawing.Point(222, 12);
+            this.ExpLabel.Name = "ExpLabel";
+            this.ExpLabel.Size = new System.Drawing.Size(37, 13);
+            this.ExpLabel.TabIndex = 5;
+            this.ExpLabel.Text = "Опыт:";
             // 
-            // label5
+            // StrengthLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(222, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Сила:";
+            this.StrengthLabel.AutoSize = true;
+            this.StrengthLabel.Location = new System.Drawing.Point(222, 68);
+            this.StrengthLabel.Name = "StrengthLabel";
+            this.StrengthLabel.Size = new System.Drawing.Size(35, 13);
+            this.StrengthLabel.TabIndex = 7;
+            this.StrengthLabel.Text = "Сила:";
             // 
             // StrengthBar
             // 
-            this.StrengthBar.Location = new System.Drawing.Point(222, 70);
+            this.StrengthBar.Location = new System.Drawing.Point(222, 85);
             this.StrengthBar.Name = "StrengthBar";
             this.StrengthBar.Size = new System.Drawing.Size(228, 23);
             this.StrengthBar.TabIndex = 6;
             // 
-            // label6
+            // IntelectLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(222, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Интилект:";
+            this.IntelectLabel.AutoSize = true;
+            this.IntelectLabel.Location = new System.Drawing.Point(222, 111);
+            this.IntelectLabel.Name = "IntelectLabel";
+            this.IntelectLabel.Size = new System.Drawing.Size(58, 13);
+            this.IntelectLabel.TabIndex = 9;
+            this.IntelectLabel.Text = "Интилект:";
             // 
             // IntelectBar
             // 
-            this.IntelectBar.Location = new System.Drawing.Point(222, 112);
+            this.IntelectBar.Location = new System.Drawing.Point(222, 127);
             this.IntelectBar.Name = "IntelectBar";
             this.IntelectBar.Size = new System.Drawing.Size(228, 23);
             this.IntelectBar.TabIndex = 8;
             // 
-            // label7
+            // CreativeLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(219, 138);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Творчество:";
+            this.CreativeLabel.AutoSize = true;
+            this.CreativeLabel.Location = new System.Drawing.Point(219, 153);
+            this.CreativeLabel.Name = "CreativeLabel";
+            this.CreativeLabel.Size = new System.Drawing.Size(69, 13);
+            this.CreativeLabel.TabIndex = 11;
+            this.CreativeLabel.Text = "Творчество:";
             // 
             // CreativeBar
             // 
-            this.CreativeBar.Location = new System.Drawing.Point(222, 154);
+            this.CreativeBar.Location = new System.Drawing.Point(222, 169);
             this.CreativeBar.Name = "CreativeBar";
             this.CreativeBar.Size = new System.Drawing.Size(228, 23);
             this.CreativeBar.TabIndex = 10;
             // 
-            // label8
+            // HealthLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(222, 178);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Здоровье:";
+            this.HealthLabel.AutoSize = true;
+            this.HealthLabel.Location = new System.Drawing.Point(222, 193);
+            this.HealthLabel.Name = "HealthLabel";
+            this.HealthLabel.Size = new System.Drawing.Size(59, 13);
+            this.HealthLabel.TabIndex = 13;
+            this.HealthLabel.Text = "Здоровье:";
             // 
             // HealthBar
             // 
-            this.HealthBar.Location = new System.Drawing.Point(222, 194);
+            this.HealthBar.Location = new System.Drawing.Point(222, 209);
             this.HealthBar.Name = "HealthBar";
             this.HealthBar.Size = new System.Drawing.Size(228, 23);
             this.HealthBar.TabIndex = 12;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.персонажToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(462, 24);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // персонажToolStripMenuItem
+            // 
+            this.персонажToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сменитьАватарToolStripMenuItem1});
+            this.персонажToolStripMenuItem.Name = "персонажToolStripMenuItem";
+            this.персонажToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.персонажToolStripMenuItem.Text = "Персонаж";
+            // 
+            // сменитьАватарToolStripMenuItem1
+            // 
+            this.сменитьАватарToolStripMenuItem1.Name = "сменитьАватарToolStripMenuItem1";
+            this.сменитьАватарToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
+            this.сменитьАватарToolStripMenuItem1.Text = "Сменить аватар";
+            this.сменитьАватарToolStripMenuItem1.Click += new System.EventHandler(this.сменитьАватарToolStripMenuItem1_Click);
             // 
             // Character
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 302);
-            this.Controls.Add(this.label8);
+            this.ClientSize = new System.Drawing.Size(462, 313);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.HealthLabel);
             this.Controls.Add(this.HealthBar);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.CreativeLabel);
             this.Controls.Add(this.CreativeBar);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.IntelectLabel);
             this.Controls.Add(this.IntelectBar);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.StrengthLabel);
             this.Controls.Add(this.StrengthBar);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ExpLabel);
             this.Controls.Add(this.ExpBar);
             this.Controls.Add(this.LvlLabel);
             this.Controls.Add(this.AgeLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.pictureBox1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Character";
             this.Text = "Character";
             this.Load += new System.EventHandler(this.Character_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,14 +236,18 @@ namespace EpicUi
         private System.Windows.Forms.Label AgeLabel;
         private System.Windows.Forms.Label LvlLabel;
         private System.Windows.Forms.ProgressBar ExpBar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label ExpLabel;
+        private System.Windows.Forms.Label StrengthLabel;
         private System.Windows.Forms.ProgressBar StrengthBar;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label IntelectLabel;
         private System.Windows.Forms.ProgressBar IntelectBar;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label CreativeLabel;
         private System.Windows.Forms.ProgressBar CreativeBar;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label HealthLabel;
         private System.Windows.Forms.ProgressBar HealthBar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem персонажToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменитьАватарToolStripMenuItem1;
     }
 }

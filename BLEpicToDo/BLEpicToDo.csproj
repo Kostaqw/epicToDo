@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,10 @@
     <Compile Include="Migrations\202108191908281_m2.cs" />
     <Compile Include="Migrations\202108191908281_m2.designer.cs">
       <DependentUpon>202108191908281_m2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110091545252_m3.cs" />
+    <Compile Include="Migrations\202110091545252_m3.designer.cs">
+      <DependentUpon>202110091545252_m3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ability.cs" />
@@ -81,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108191908281_m2.resx">
       <DependentUpon>202108191908281_m2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110091545252_m3.resx">
+      <DependentUpon>202110091545252_m3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

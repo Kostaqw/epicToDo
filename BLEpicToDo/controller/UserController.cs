@@ -1,6 +1,8 @@
-﻿using EpicToDo;
+﻿using BLEpicToDo.Model;
+using EpicToDo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,9 @@ namespace BLEpicToDo.controller
     public class UserController
     {
         protected User User { get; set; }
+        private ApContext AC = new ApContext();
+
+        ImageConverter converter = new ImageConverter();
 
         public delegate void NewLvl(Action action);
         public event NewLvl newLvl;
@@ -43,6 +48,24 @@ namespace BLEpicToDo.controller
                 User.Exp = exp - delta;
                 newLvl.Invoke(Action.newUserLvl);
             }
+            AC.SaveChanges();
         }
+
+        public void UploadImage(Bitmap photo)
+        {
+            //TODO: Проверка корректности
+            byte[] bytePhoto;
+            bytePhoto = (byte[])converter.ConvertTo(photo, typeof(byte[]));
+            var LoadPhoto = AC.Users.FirstOrDefault(c => c.UserId==User.UserId);
+            LoadPhoto.photo = bytePhoto;
+            AC.SaveChanges();
+        }
+
+        public Bitmap Download()
+        {
+            Bitmap image = (Bitmap)converter.ConvertFrom(User.photo);
+            return image;
+        }
+
     }
 }

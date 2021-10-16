@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 
 namespace EpicToDo
 {
@@ -24,11 +25,27 @@ namespace EpicToDo
         public int Level { get; set; }
         public int Exp { get; set; }
         public int MaxExp { get; set; }
-        public int Strength { get; set; }
-        public int Intelect { get; set; }
-        public int Creative { get; set; }
-        public int Health { get; set; }
 
+        public int Strength { get; set; }
+        public int StrengthExp { get; set; }
+        public int MaxStrengthExp { get; set; }
+
+        
+        public int Intelect { get; set; }
+        public int IntelExp { get; set; }
+        public int MaxIntelExp { get; set; }
+
+        public int Creative { get; set; }
+        public int CreativeExp { get; set; }
+        public int MaxCreativeExp { get; set; }
+
+        public int Health { get; set; }
+        public int HealthExp { get; set; }
+        public int MaxHealthExp { get; set; }
+
+
+        public byte[] photo { get; set; }
+        
         //TODO: параметры для статистики
         //TODO: параметры для кастомизации
 
@@ -57,6 +74,10 @@ namespace EpicToDo
         public User()
         {
             MaxExp = 100;
+            MaxHealthExp = 3;
+            MaxIntelExp = 3;
+            MaxCreativeExp = 3;
+            MaxStrengthExp = 3;
         }
     }
 }
