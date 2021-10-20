@@ -76,11 +76,11 @@ namespace BLEpicToDo.controller
         /// <param name="login">имя</param>
         /// <param name="pasword">пароль</param>
         /// <returns>возвращает булевое значение в зависимости от результата</returns>
-        public bool Registration(string login, string pasword)
+        public bool Registration(string login, string pasword, int age)
         {
             if (!FindName(login))
             {
-                context.Users.Add(new User(login, pasword));
+                context.Users.Add(new User(login, pasword, age));
                 context.SaveChanges();
                 return true;
             }

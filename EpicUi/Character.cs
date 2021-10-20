@@ -37,6 +37,7 @@ namespace EpicUi
             {
                 pictureBox1.Image = UC.Download();
             }
+            LoadInfo();
         }
 
 
@@ -48,6 +49,33 @@ namespace EpicUi
                 pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
                 UC.UploadImage((Bitmap)pictureBox1.Image);
             }
+        }
+
+        private void LoadInfo()
+        {
+            NameLabel.Text = $"Имя: {User.Name}";
+            AgeLabel.Text = $"Возраст: {User.Age}";
+            LvlLabel.Text = $"Уровень: {User.Level}";
+            ExpLabel.Text = $"Опыт: {User.Exp} / {User.MaxExp}";
+            StrengthLabel.Text = $"Сила: {User.Strength}";
+            IntelectLabel.Text = $"Интилект: {User.Intelect}";
+            CreativeLabel.Text = $"Творчество: {User.Creative}";
+            HealthLabel.Text = $"Здоровье: {User.Health}";
+
+            ExpBar.Maximum = User.MaxExp;
+            ExpBar.Value = User.Exp;
+
+            StrengthBar.Maximum = User.MaxStrengthExp;
+            StrengthBar.Value = User.StrengthExp;
+
+            IntelectBar.Maximum = User.MaxIntelExp;
+            IntelectBar.Value = User.IntelExp;
+
+            CreativeBar.Maximum = User.MaxCreativeExp;
+            CreativeBar.Value = User.CreativeExp;
+
+            HealthBar.Maximum = User.MaxHealthExp;
+            HealthBar.Value = User.HealthExp;
         }
     }
 }

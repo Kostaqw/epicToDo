@@ -22,6 +22,7 @@ namespace EpicToDo
         [Key] public int UserId { get; set; }
         public string Name { get; set; }
         public string Password { get; set; } //TODO: реализовать хэширование
+        public int Age { get; set; }
         public int Level { get; set; }
         public int Exp { get; set; }
         public int MaxExp { get; set; }
@@ -53,7 +54,7 @@ namespace EpicToDo
         public List<Ability> Abilities { get; set; }
         public List<Daily> Dailies { get; set; }
         #endregion
-        public User(string name, string password)
+        public User(string name, string password, int age): base()
         {
             //TODO: услажнить проверку (пробелы, количество символов)
             if (string.IsNullOrEmpty(name))
@@ -68,7 +69,7 @@ namespace EpicToDo
 
             Name = name;
             Password = password;
-            MaxExp = 100;
+            Age = age;
         }
 
         public User()
@@ -78,6 +79,7 @@ namespace EpicToDo
             MaxIntelExp = 3;
             MaxCreativeExp = 3;
             MaxStrengthExp = 3;
+            
         }
     }
 }

@@ -97,7 +97,7 @@ namespace EpicUi
             // ExpLabel
             // 
             this.ExpLabel.AutoSize = true;
-            this.ExpLabel.Location = new System.Drawing.Point(222, 12);
+            this.ExpLabel.Location = new System.Drawing.Point(222, 24);
             this.ExpLabel.Name = "ExpLabel";
             this.ExpLabel.Size = new System.Drawing.Size(37, 13);
             this.ExpLabel.TabIndex = 5;

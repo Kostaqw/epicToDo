@@ -21,10 +21,13 @@ namespace EpicUi
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //TODO: Проверка на корректность
             string login, password;
+            int age = Convert.ToByte(textBox3.Text);
+
             login = textBox1.Text;
             password = textBox2.Text;
-            if (AC.Registration(login, password))
+            if (AC.Registration(login, password, age))
             {
                 MessageBox.Show("Вы успешно зарегестрированы", "успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
