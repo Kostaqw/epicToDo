@@ -33,7 +33,7 @@ namespace EpicUi
         {
             TC = new TaskController(user);
             UC = new UserController(user);
-
+            UC.newLvl += NewLwl;
             UpdateTaskTable();
         }
 
@@ -93,7 +93,8 @@ namespace EpicUi
         {
             if (CurrentTask != null)
             {
-                TC.EditTask(CurrentTask, true);
+
+                CompleteTask();
                 UpdateTaskTable();
             }
             else
@@ -119,10 +120,32 @@ namespace EpicUi
             }
         }
 
+        private void CompleteTask()
+        {
+            TC.EditTask(CurrentTask, true);
+            UC.AddExpUser((int)CurrentTask.Dificult);
+
+            Ability abil = UC.FindAbility(CurrentTask.Ability);
+            UC.AddExpAbility((int)CurrentTask.Dificult / 2, abil);
+
+            if (abil.attribute == EpicToDo.Attribute.Intelect)
+            {
+                UC.AddExpIntelect((int)CurrentTask.Dificult / 50);
+            }
+
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Character charForm = new Character(this, user);
             charForm.ShowDialog();
         }
+
+        private void NewLwl(BLEpicToDo.controller.Action action, string message)
+        {
+            MessageBox.Show("Поздравляю новый уровень");
+        }
+
+
     }
 }

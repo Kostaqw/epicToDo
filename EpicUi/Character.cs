@@ -21,22 +21,12 @@ namespace EpicUi
         {
             InitializeComponent();
             ParentForm = parentForm;
-            User = user;
-            UC = new UserController(User);
+            UC = new UserController(user);
+            User = UC.UpdateUserInfo(user);
         }
 
         private void Character_Load(object sender, EventArgs e)
         {
-            NameLabel.Text += User.Name;
-            LvlLabel.Text += User.Level;
-            if (User.photo == null)
-            {
-                pictureBox1.Image = Image.FromFile(@"C:\Users\Zver\source\repos\epicToDo\EpicUi\image\standAvatar.jpg"); //TODO: разобраться с относительным путем
-            }
-            else
-            {
-                pictureBox1.Image = UC.Download();
-            }
             LoadInfo();
         }
 
@@ -53,6 +43,14 @@ namespace EpicUi
 
         private void LoadInfo()
         {
+            if (User.photo == null)
+            {
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Zver\source\repos\epicToDo\EpicUi\image\standAvatar.jpg"); //TODO: разобраться с относительным путем
+            }
+            else
+            {
+                pictureBox1.Image = UC.Download();
+            }
             NameLabel.Text = $"Имя: {User.Name}";
             AgeLabel.Text = $"Возраст: {User.Age}";
             LvlLabel.Text = $"Уровень: {User.Level}";

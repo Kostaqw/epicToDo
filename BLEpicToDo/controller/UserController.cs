@@ -22,7 +22,7 @@ namespace BLEpicToDo.controller
 
         ImageConverter converter = new ImageConverter();
 
-        public delegate void NewLvl(Action action);
+        public delegate void NewLvl(Action action, string message);
         public event NewLvl newLvl;
 
         public UserController(User user)
@@ -37,8 +37,10 @@ namespace BLEpicToDo.controller
             }
         }
 
+        #region Добавление опыта
         public void AddExpUser(int exp)
         {
+            User = AC.Users.FirstOrDefault(c => c.UserId == User.UserId);
             User.Exp += exp;
             if (User.Exp + exp > User.MaxExp)
             {
@@ -46,11 +48,47 @@ namespace BLEpicToDo.controller
                 User.Level++;
                 User.MaxExp += 100 * User.Level;
                 User.Exp = exp - delta;
-                newLvl.Invoke(Action.newUserLvl);
+                newLvl.Invoke(Action.newUserLvl, "Пользователь");
             }
             AC.SaveChanges();
         }
 
+        public void AddExpAbility(int exp, Ability abil)
+        {
+            Ability Abbil;
+            Abbil = AC.Abilities.FirstOrDefault(c => c.AbilityId == abil.AbilityId);
+            
+            Abbil.Exp += exp;
+            if (Abbil.Exp + exp > Abbil.MaxExp)
+            {
+                int delta = Abbil.MaxExp - Abbil.Exp;
+                Abbil.Level++;
+                Abbil.MaxExp += 100 * Abbil.Level;
+                Abbil.Exp = exp - delta;
+                newLvl.Invoke(Action.newAbilityLvl, Abbil.Name);
+            }
+            AC.SaveChanges();
+
+        }
+
+        public void AddExpIntelect(int exp)
+        {
+            User = AC.Users.FirstOrDefault(c => c.UserId == User.UserId);
+            User.IntelExp += exp;
+            if (User.IntelExp + exp > User.MaxIntelExp)
+            {
+                int delta = User.MaxIntelExp - User.IntelExp;
+                User.Intelect++;
+                User.MaxIntelExp += 2 * User.Intelect;
+                User.IntelExp = exp - delta;
+                newLvl.Invoke(Action.newAtributeLvl, "Интилект");
+            }
+            AC.SaveChanges();
+        }
+
+
+
+        #endregion
         public void UploadImage(Bitmap photo)
         {
             //TODO: Проверка корректности
@@ -65,6 +103,18 @@ namespace BLEpicToDo.controller
         {
             Bitmap image = (Bitmap)converter.ConvertFrom(User.photo);
             return image;
+        }
+
+        public User UpdateUserInfo(User user)
+        { 
+            //TODO: Проверка на существоване данного пользователя;
+            return AC.Users.FirstOrDefault(c => c.UserId == User.UserId);
+        }
+
+        public Ability FindAbility(string name)
+        { 
+            Ability abil = AC.Abilities.FirstOrDefault(c => c.Name == name);
+            return abil;
         }
 
     }
