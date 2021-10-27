@@ -42,12 +42,15 @@ namespace BLEpicToDo.controller
         {
             User = AC.Users.FirstOrDefault(c => c.UserId == User.UserId);
             User.Exp += exp;
-            if (User.Exp + exp > User.MaxExp)
+            if (User.Exp > User.MaxExp)
             {
-                int delta = User.MaxExp - User.Exp;
-                User.Level++;
-                User.MaxExp += 100 * User.Level;
-                User.Exp = exp - delta;
+                while (User.Exp >= User.MaxExp)
+                {
+                    int delta = User.MaxExp - User.Exp;
+                    User.Level++;
+                    User.MaxExp += 100 * User.Level;
+                    User.Exp = exp - delta;
+                }
                 newLvl.Invoke(Action.newUserLvl, "Пользователь");
             }
             AC.SaveChanges();
@@ -59,29 +62,94 @@ namespace BLEpicToDo.controller
             Abbil = AC.Abilities.FirstOrDefault(c => c.AbilityId == abil.AbilityId);
             
             Abbil.Exp += exp;
-            if (Abbil.Exp + exp > Abbil.MaxExp)
+            if (Abbil.Exp >= Abbil.MaxExp)
             {
-                int delta = Abbil.MaxExp - Abbil.Exp;
-                Abbil.Level++;
-                Abbil.MaxExp += 100 * Abbil.Level;
-                Abbil.Exp = exp - delta;
-                newLvl.Invoke(Action.newAbilityLvl, Abbil.Name);
+                while (Abbil.Exp >= Abbil.MaxExp)
+                {
+                    int delta = Abbil.MaxExp - Abbil.Exp;
+                    Abbil.Level++;
+                    Abbil.MaxExp += 100 * Abbil.Level;
+                    Abbil.Exp = exp - delta;
+                    newLvl.Invoke(Action.newAbilityLvl, Abbil.Name);
+                }
             }
             AC.SaveChanges();
 
         }
 
-        public void AddExpIntelect(int exp)
+        public void AddExpAttribut(int exp, EpicToDo.Attribute atr)
         {
             User = AC.Users.FirstOrDefault(c => c.UserId == User.UserId);
-            User.IntelExp += exp;
-            if (User.IntelExp + exp > User.MaxIntelExp)
+
+            switch (atr)
             {
-                int delta = User.MaxIntelExp - User.IntelExp;
-                User.Intelect++;
-                User.MaxIntelExp += 2 * User.Intelect;
-                User.IntelExp = exp - delta;
-                newLvl.Invoke(Action.newAtributeLvl, "Интилект");
+                case EpicToDo.Attribute.Intelect:
+                    {
+                        User.IntelExp += exp;
+                        if (User.IntelExp >= User.MaxIntelExp)
+                        {
+                            while (User.IntelExp >= User.MaxIntelExp)
+                            {
+                                int delta = User.MaxIntelExp - User.IntelExp;
+                                User.Intelect++;
+                                User.MaxIntelExp += 2 * User.Intelect;
+                                User.IntelExp = exp - delta;
+                                newLvl.Invoke(Action.newAtributeLvl, "Интилект");
+                            }
+                        }
+                        break;
+                    }
+                case EpicToDo.Attribute.Strength:
+                    {
+                        User.StrengthExp += exp;
+                        if (User.StrengthExp >= User.MaxStrengthExp)
+                        {
+                            while (User.StrengthExp >= User.MaxStrengthExp)
+                            {
+                                int delta = User.MaxStrengthExp - User.StrengthExp;
+                                User.Strength++;
+                                User.MaxStrengthExp += 2 * User.Strength;
+                                User.StrengthExp = exp - delta;
+                                newLvl.Invoke(Action.newAtributeLvl, "Сила");
+                            }
+                        }
+
+                        break;
+                    }
+                case EpicToDo.Attribute.Health:
+                    {
+                        User.HealthExp += exp;
+                        if (User.HealthExp >= User.MaxHealthExp)
+                        {
+                            while (User.HealthExp >= User.MaxHealthExp)
+                            {
+                                int delta = User.MaxHealthExp - User.HealthExp;
+                                User.Health++;
+                                User.MaxHealthExp += 2 * User.Health;
+                                User.HealthExp = exp - delta;
+                                newLvl.Invoke(Action.newAtributeLvl, "Здоровье");
+                            }
+                        }
+
+                        break;
+                    }
+                case EpicToDo.Attribute.Creative:
+                    {
+                        User.CreativeExp += exp;
+                        if (User.CreativeExp >= User.MaxCreativeExp)
+                        {
+                            while (User.CreativeExp >= User.MaxCreativeExp)
+                            {
+                                int delta = User.MaxCreativeExp - User.CreativeExp;
+                                User.Creative++;
+                                User.MaxCreativeExp += 2 * User.Creative;
+                                User.CreativeExp = exp - delta;
+                                newLvl.Invoke(Action.newAtributeLvl, "Творчество");
+                            }
+                        }
+
+                        break;
+                    }
             }
             AC.SaveChanges();
         }

@@ -82,6 +82,9 @@ namespace EpicUi
                 {
                     if (task.complite == false)
                     {
+                        //TODO: Придумать что получше
+                        if (task.Ability == null)
+                            task.Ability = "";
                         dataGridView1.Rows.Add(task.Name, task.Description, task.Dificult, task.Ability.ToString());
                     }
                 }
@@ -125,12 +128,34 @@ namespace EpicUi
             TC.EditTask(CurrentTask, true);
             UC.AddExpUser((int)CurrentTask.Dificult);
 
-            Ability abil = UC.FindAbility(CurrentTask.Ability);
-            UC.AddExpAbility((int)CurrentTask.Dificult / 2, abil);
-
-            if (abil.attribute == EpicToDo.Attribute.Intelect)
+            if (CurrentTask.Ability != null)
             {
-                UC.AddExpIntelect((int)CurrentTask.Dificult / 50);
+                Ability abil = UC.FindAbility(CurrentTask.Ability);
+                UC.AddExpAbility((int)CurrentTask.Dificult / 2, abil);
+
+                switch (abil.attribute)
+                {
+                    case EpicToDo.Attribute.Intelect:
+                        {
+                            UC.AddExpAttribut((int)CurrentTask.Dificult / 50, EpicToDo.Attribute.Intelect);
+                            break;
+                        }
+                    case EpicToDo.Attribute.Strength:
+                        {
+                            UC.AddExpAttribut((int)CurrentTask.Dificult / 50, EpicToDo.Attribute.Strength);
+                            break;
+                        }
+                    case EpicToDo.Attribute.Health:
+                        {
+                            UC.AddExpAttribut((int)CurrentTask.Dificult / 50, EpicToDo.Attribute.Health);
+                            break;
+                        }
+                    case EpicToDo.Attribute.Creative:
+                        {
+                            UC.AddExpAttribut((int)CurrentTask.Dificult / 50, EpicToDo.Attribute.Creative);
+                            break;
+                        }
+                }
             }
 
         }

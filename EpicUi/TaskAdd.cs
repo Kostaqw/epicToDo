@@ -55,7 +55,13 @@ namespace EpicUi
         {
             string name = textBox1.Text;
             string description = textBox2.Text;
-            string ablity = comboBox1.SelectedItem.ToString();
+            string ablity = null;
+            
+            if (comboBox1.SelectedItem != null)
+            {
+                ablity = comboBox1.SelectedItem.ToString();
+            }
+
             Dificults dificult;
             switch (comboBox2.SelectedIndex)
             {
