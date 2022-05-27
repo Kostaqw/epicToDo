@@ -40,6 +40,7 @@
             this.BAddTask = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.DailtTasks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ControllTasks.SuspendLayout();
             this.SuspendLayout();
@@ -161,11 +162,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // DailtTasks
+            // 
+            this.DailtTasks.Location = new System.Drawing.Point(465, 355);
+            this.DailtTasks.Name = "DailtTasks";
+            this.DailtTasks.Size = new System.Drawing.Size(151, 23);
+            this.DailtTasks.TabIndex = 5;
+            this.DailtTasks.Text = "Ежедневные задания";
+            this.DailtTasks.UseVisualStyleBackColor = true;
+            this.DailtTasks.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 448);
+            this.Controls.Add(this.DailtTasks);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ControllTasks);
@@ -193,5 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskDificult;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abbility;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DailtTasks;
     }
 }

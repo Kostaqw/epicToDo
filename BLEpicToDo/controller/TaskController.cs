@@ -44,6 +44,20 @@ namespace BLEpicToDo.controller
             return tasks;
         }
 
+        /// <summary>
+        /// Получить список всех ежедневных задач
+        /// </summary>
+        /// <returns>Список задач</returns>
+        public List<EpicToDo.Daily> GetDailys()
+        {
+            var daily = new List<Daily>();
+            using (var ApContext = new ApContext())
+            {
+                daily = ApContext.Dailies.Where<Daily>(o => o.User.UserId == User.UserId).ToList();
+            }
+
+            return daily;
+        }
 
         /// <summary>
         /// Получить список всех способностей текущего пользователя
@@ -78,6 +92,59 @@ namespace BLEpicToDo.controller
 
             return abilites;
         }
+
+        /// <summary>
+        /// Поиск в БД задачи по имени 
+        /// </summary>
+        /// <param name="name">название задачи</param>
+        /// <param name="comlite">искать ли завершенную задачу</param>
+        /// <returns>возвращает задачу или null</returns>
+        public Task FindTask(string name, bool comlite = false)
+        {
+            Task task;
+            if (!comlite)
+            {
+                task = AC.Tasks.FirstOrDefault(p => p.Name == name && p.complite == false);
+            }
+            else
+            {
+                task = AC.Tasks.FirstOrDefault(p => p.Name == name);
+            }
+            return task;
+
+        }
+
+        /// <summary>
+        /// Поиск в базе данных ежедневной задачи по имени
+        /// </summary>
+        /// <param name="name">Название задачи</param>
+        /// <returns>ежедневное задание</returns>
+        public Daily FindDaily(string name)
+        {
+            Daily daily = AC.Dailies.FirstOrDefault(p => p.Name == name);          
+            return daily;
+        }
+
+        /// <summary>
+        /// Поиск в БД задачи по имени и завершено она или нет
+        /// </summary>
+        /// <param name="name">название задачи</param>
+        /// <param name="comlite">искать ли завершенную задачу</param>
+        /// <returns>возвращает задачу или null</returns>
+        public Daily FindDaily(string name, bool comlite = false)
+        {
+            Daily daily;
+            if (!comlite)
+            {
+                daily = AC.Dailies.FirstOrDefault(p => p.Name == name && p.complete == false);
+            }
+            else
+            {
+                daily = AC.Dailies.FirstOrDefault(p => p.Name == name);
+            }
+            return daily;
+
+        }
         #endregion
 
         public void EditTask(Task task, string name, string description, string ability, Dificults dificults)
@@ -111,6 +178,8 @@ namespace BLEpicToDo.controller
             }
         }
 
+
+        #region Добавление в БД
         /// <summary>
         /// Добавляет способность в базу данных для текущего пользователя
         /// </summary>
@@ -159,7 +228,19 @@ namespace BLEpicToDo.controller
             return true;
         }
 
+        public bool DailyAdd(Daily daily)
+        {
+            
+            if (!FindAUser(daily.User.UserId))
+            {
+                throw new ArgumentException($"пользователь с данным Id: {nameof(daily.UserId)} не найден");
+            }
 
+            AC.Dailies.Add(daily);
+            AC.SaveChanges();
+            return true;
+        }
+        #endregion
 
 
         /// <summary>
@@ -247,26 +328,7 @@ namespace BLEpicToDo.controller
                 return false;
         }
 
-        /// <summary>
-        /// Поиск в БД задачи по имени 
-        /// </summary>
-        /// <param name="name">название задачи</param>
-        /// <param name="comlite">искать ли завершенную задачу</param>
-        /// <returns>возвращает задачу или null</returns>
-        public Task FindTask(string name, bool comlite = false)
-        {
-            Task task;
-            if (!comlite)
-            {
-                task = AC.Tasks.FirstOrDefault(p => p.Name == name && p.complite == false);
-            }
-            else
-            {
-                task = AC.Tasks.FirstOrDefault(p => p.Name == name);
-            }
-            return task;
 
-        }
 
 
 

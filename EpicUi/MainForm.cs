@@ -171,6 +171,10 @@ namespace EpicUi
             MessageBox.Show("Поздравляю новый уровень");
         }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DailyTasks dailyTasks = new DailyTasks(user, this);
+            dailyTasks.ShowDialog();
+        }
     }
 }
